@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Kerja - PC IPM Depok Barat</title>
+  <link rel="icon" href="foto/debaar.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #fffef7;
+      color: #333;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      height: 300px;
+      background: url('foto/debaar.png') no-repeat center center;
+      background-size: contain;
+      opacity: 0.07;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    header {
+      background: #fff;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .logo-text h1 {
+      font-size: 18px;
+      color: #007B3E;
+      margin: 0;
+    }
+
+    .logo-text h2 {
+      font-size: 14px;
+      color: #333;
+      margin: 0;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #007B3E;
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+
+    nav.nav {
+      width: 100%;
+    }
+
+    nav.nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      text-align: center;
+    }
+
+    nav.nav a {
+      text-decoration: none;
+      color: #007B3E;
+      font-weight: bold;
+    }
+
+    nav.nav a:hover,
+    nav.nav a.active {
+      color: #ff6600;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav.nav ul {
+        display: none;
+        flex-direction: column;
+        background: #fff;
+        width: 100%;
+        padding: 10px 0;
+        margin-top: 10px;
+      }
+
+      nav.nav ul.active {
+        display: flex;
+      }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #007B3E;
+      margin-bottom: 30px;
+    }
+
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h2 {
+      color: #ff6600;
+      margin-bottom: 10px;
+    }
+
+    .card ul {
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+
+    .card ul li {
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    footer {
+      background: #007B3E;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="foto/debaar.png" alt="Logo IPM" />
+      <div class="logo-text">
+        <h1>IKATAN PELAJAR MUHAMMADIYAH</h1>
+        <h2>PC IPM DEPOK BARAT</h2>
+      </div>
+    </div>
+
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav class="nav">
+      <ul id="nav-list">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="sejarah.html">Sejarah</a></li>
+        <li><a href="artikel.html">Artikel</a></li>
+        <li><a href="struktur.html">Struktur Organisasi</a></li>
+        <li><a href="program.html" class="active">Program</a></li>
+        <li><a href="visimisi.html">Visi Misi</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>PROGRAM KERJA PC IPM DEPOK BARAT</h1>
+
+    <div class="filter">
+      <label for="filter">Filter Bidang:</label>
+      <select id="filter" onchange="filterCards()">
+        <option value="all">Semua</option>
+        <option value="Ketua">Ketua Umum</option>
+        <option value="Sekretaris">Sekretaris Umum</option>
+        <option value="Bendahara">Bendahara Umum</option>
+        <option value="Perkaderan">Bidang Perkaderan</option>
+        <option value="Dakwah">Bidang Kajian Dakwah Islam</option>
+        <option value="Advokasi">Bidang Advokasi</option>
+        <option value="PIP">Bidang Pengkajian Ilmu Pengetahuan</option>
+        <option value="ASBO">Bidang Apresiasi Seni Budaya dan Olahraga</option>
+        <option value="IPMAWATI">Bidang IPMAWATI</option>
+        <option value="PKK">Bidang PKK</option>
+      </select>
+    </div>
+
+    <div class="program-grid">
+      <div class="card Ketua">
+        <h2>📌 Ketua Umum</h2>
+        <ul>
+          <li>Mengadakan Upgrading</li>
+          <li>Mengadakan Silaturahmi ke Ranting</li>
+          <li>Mengadakan Rapat Pleno 3 Bulan 1x</li>
+          <li>Mengadakan Rapat Pimpinan Mingguan</li>
+          <li>Bekerjasama Dengan Organisasi Lain</li>
+        </ul>
+      </div>
+      <div class="card Sekretaris">
+        <h2>🗂️ Sekretaris Umum</h2>
+        <ul>
+          <li>Mengarsipkan Surat & Benda Milik PC IPM Depok Barat</li>
+          <li>Notulensi Rapat</li>
+          <li>Memfasilitasi Pembuatan Almamater dan KTA</li>
+          <li>Mengadakan Pelatihan Administrasi</li>
+        </ul>
+      </div>
+      <div class="card Bendahara">
+        <h2>💰 Bendahara Umum</h2>
+        <ul>
+          <li>Rencana Anggaran Pendapatan dan Belanja C (RAPBC)</li>
+          <li>Pelatihan Administrasi Keuangan</li>
+          <li>Pendistribusian KTA dan Almamater</li>
+          <li>Mengadakan Uang Kas / Infaq</li>
+        </ul>
+      </div>
+      <div class="card Perkaderan">
+        <h2>👥 Bidang Perkaderan</h2>
+        <ul>
+          <li>Turba (Pimpinan Ranting Sedebar)</li>
+          <li>DPT (Dialog Tentang Perkaderan)</li>
+          <li>PKDTM 1 (Pelatihan Kader Dasar Melati 1)</li>
+          <li>Seminar Budaya Rokok</li>
+        </ul>
+      </div>
+      <div class="card Dakwah">
+        <h2>🕌 Bidang Kajian Dakwah Islam</h2>
+        <ul>
+          <li>KAISAR (Kajian Islam Rutin)</li>
+          <li>PHBI (Perayaan Hari Besar Islam)</li>
+          <li>Dakwah Sosmed</li>
+          <li>Pelatihan Dai</li>
+          <li>Pelatihan Sembelih Halal</li>
+          <li>Ramadhan Seru</li>
+          <li>Silaturahmi</li>
+        </ul>
+      </div>
+      <div class="card Advokasi">
+        <h2>⚖️ Bidang Advokasi</h2>
+        <ul>
+          <li>Advotalk</li>
+          <li>Pelajar Turun Tangan</li>
+          <li>Kopdar Sekolah Muhammadiyah</li>
+          <li>Studi Banding</li>
+          <li>Advormation</li>
+        </ul>
+      </div>
+      <div class="card PIP">
+        <h2>🧠 Bidang Pengkajian Ilmu Pengetahuan</h2>
+        <ul>
+          <li>Seminar</li>
+          <li>IPM Berseni</li>
+          <li>Pengoptimalan Media Sosial</li>
+          <li>Quotes of The Day</li>
+        </ul>
+      </div>
+      <div class="card ASBO">
+        <h2>🎭 Bidang Apresiasi Seni Budaya dan Olahraga</h2>
+        <ul>
+          <li>Olahraga Bareng</li>
+          <li>Informasi ASBO</li>
+          <li>Gebyar Musycab</li>
+          <li>ASBO Competition</li>
+      </ul>
+      </div>
+      <div class="card IPMAWATI">
+        <h2>👩‍🎓 Bidang IPMAWATI</h2>
+        <ul>
+          <li>Mentoring Ipmawati</li>
+          <li>Pelatihan Ipmawati</li>
+          <li>Aksi Ipmawati</li>
+        </ul>
+      </div>
+      <div class="card PKK">
+        <h2>🛍️ Bidang PKK</h2>
+        <ul>
+          <li>Seminar</li>
+          <li>Jabar (Jualan Anak Debar)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <footer>
+    &copy; 2025 PC IPM Depok Barat | Dikelola oleh PC IPM Debar & Alfiana Rahmawati G
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("nav-list").classList.toggle("active");
+    }
+  </script>
+
+</body>
+</html>

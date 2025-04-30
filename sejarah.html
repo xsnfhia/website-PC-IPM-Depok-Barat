@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sejarah IPM - PC IPM Depok Barat</title>
+  <link rel="icon" type="image/png" href="foto/debaar.png" sizes="512x512" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #fffef7;
+      color: #333;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      height: 300px;
+      background: url('foto/debaar.png') no-repeat center center;
+      background-size: contain;
+      opacity: 0.07;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    header {
+      background: #fff;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .logo-text h1 {
+      font-size: 18px;
+      color: #007B3E;
+      margin: 0;
+    }
+
+    .logo-text h2 {
+      font-size: 14px;
+      color: #333;
+      margin: 0;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #007B3E;
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+
+    nav.nav {
+      width: 100%;
+    }
+
+    nav.nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      text-align: center;
+    }
+
+    nav.nav a {
+      text-decoration: none;
+      color: #007B3E;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav.nav a:hover,
+    nav.nav a.active {
+      color: #ff6600;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav.nav ul {
+        display: none;
+        flex-direction: column;
+        background: #fff;
+        width: 100%;
+        padding: 10px 0;
+        margin-top: 10px;
+        animation: fadeIn 0.3s ease-in-out;
+        text-align: center;
+      }
+
+      nav.nav ul.active {
+        display: flex;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2.section-title {
+      color: #007B3E;
+      font-size: 24px;
+      margin-bottom: 20px;
+      border-bottom: 3px solid #007B3E;
+      padding-bottom: 5px;
+    }
+
+    p {
+      text-align: justify;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #007B3E;
+    }
+
+    .source {
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    .source a {
+      color: #007B3E;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .source a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background: #007B3E;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="foto/debaar.png" alt="Logo IPM" />
+      <div class="logo-text">
+        <h1>IKATAN PELAJAR MUHAMMADIYAH</h1>
+        <h2>PC IPM DEPOK BARAT</h2>
+      </div>
+    </div>
+
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav class="nav">
+      <ul id="nav-list">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="sejarah.html" class="active">Sejarah</a></li>
+        <li><a href="artikel.html">Artikel</a></li>
+        <li><a href="struktur.html">Struktur Organisasi</a></li>
+        <li><a href="program.html">Program</a></li>
+        <li><a href="visimisi.html">Visi Misi</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2 class="section-title">Sejarah IPM</h2>
+    <p>
+      IPM itu singkatan dari <span class="highlight">Ikatan Pelajar Muhammadiyah</span>.
+      Sebuah organisasi pelajar yang besar di Indonesia karena basis masanya berasal dari seluruh siswa/siswi di Sekolah Muhammadiyah tingkat SMP sederajat dan SMA sederajat. IPM ini merupakan salah satu organisasi otonom (Ortom) Muhammadiyah yang bergerak di kalangan pelajar. Muhammadiyah dikenal sebagai gerakan dakwah Islam amar ma'ruf nahi munkar, berakidah Islam dan bersumber pada Al-Qur’an dan As-Sunnah. Maka begitupun dengan IPM juga merupakan gerakan dakwah di kalangan pelajar.
+    </p>
+    <p>
+      Selain itu, situasi dan kondisi politik di Indonesia tahun 60-an yaitu pada masa berjayanya orde lama dan PKI, Muhammadiyah mendapat tantangan yang sangat berat untuk menegakkan dan menjalankan misinya. Oleh karena itu, IPM terpanggil untuk mendukung misi Muhammadiyah serta menjadi pelopor, pelangsung dan penyempurna perjuangan Muhammadiyah.
+    </p>
+    <p>
+      Keinginan dan upaya para pelajar untuk membentuk organisasi pelajar Muhammadiyah sebenarnya telah dirintis sejak tahun 1919. Akan tetapi selalu ada halangan dan rintangan dari berbagai pihak, sehingga baru mendapatkan titik terang ketika Konferensi Pemuda Muhammadiyah (PM) pada tahun 1958 di Garut.
+    </p>
+    <p>
+      Organisasi pelajar Muhammadiyah akan ditempatkan di bawah pengawasan PM. Keputusan konferensi tersebut diperkuat pada Muktamar PM II yang berlangsung pada tanggal 24-28 Juli 1960 di Yogyakarta, yakni dengan memutuskan untuk membentuk IPM (Keputusan II/ nomor 4).
+    </p>
+    <p>
+      Setelah ada kesepakatan antara Pimpinan Pusat (PP) PM dan Muhammadiyah Majelis Pendidikan dan Pengajaran pada tanggal 15 Juni 1961, ditandatanganilah peraturan bersama tentang organisasi IPM. Pendirian IPM tersebut dimatangkan secara nasional pada Konferensi PM di Surakarta tanggal 18-20 Juli 1961.
+    </p>
+    <p>
+      Sehingga pada tanggal <span class="highlight">5 Shafar 1381 H</span> bertepatan dengan tanggal <span class="highlight">18 Juli 1961 M</span> ditetapkan sebagai hari kelahiran IPM dengan Ketua Umum Herman Helmi Farid Ma’ruf dan Sekretaris Umum Muh. Wirsyam Hasan. Akhirnya, IPM menjadi salah satu organisasi otonom (ortom) Muhammadiyah yang bergerak di bidang dakwah dan kaderisasi di kalangan pelajar Muhammadiyah.
+    </p>
+
+    <h2 class="section-title">Maksud & Tujuan IPM</h2>
+    <p>
+      Terbentuknya pelajar muslim yang berilmu, berakhlaq mulia, dan terampil dalam rangka menegakkan dan menjunjung tinggi nilai-nilai ajaran Islam sehingga terwujud masyarakat Islam yang sebenar-benarnya.
+    </p>
+
+    <div class="source">
+      Daftar Pustaka: <a href="https://ipm.or.id/sejarah-ikatan-pelajar-muhammadiyah/" target="_blank">ipm.or.id</a>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 PC IPM Depok Barat | Dikelola oleh PC IPM Debar & Alfiana Rahmawati G
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("nav-list").classList.toggle("active");
+    }
+  </script>
+</body>
+</html>
