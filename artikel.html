@@ -16,10 +16,15 @@
 
     html, body {
       height: 100%;
-      overflow-x: hidden;
+    }
+
+    body {
       display: flex;
       flex-direction: column;
       background: #fffef7;
+      color: #333;
+      overflow-x: hidden;
+      position: relative;
     }
 
     body::before {
@@ -34,19 +39,36 @@
       background-size: contain;
       opacity: 0.07;
       z-index: 0;
+      pointer-events: none;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      bottom: -30px;
+      right: -30px;
+      width: 220px;
+      height: 220px;
+      background: url('foto/debaar.png') no-repeat;
+      background-size: contain;
+      opacity: 0.04;
+      z-index: 0;
+      pointer-events: none;
     }
 
     header {
       background: #fff;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
-      z-index: 1000;
-      flex-wrap: wrap;
+      z-index: 999;
+    }
+
+    .header-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
     }
 
     .logo {
@@ -85,56 +107,76 @@
       transition: 0.3s;
     }
 
-    .nav ul {
+    nav.nav ul {
       list-style: none;
       display: flex;
+      justify-content: center;
       gap: 20px;
+      padding: 10px 0;
       text-align: center;
     }
 
-    .nav a {
+    nav.nav a {
       text-decoration: none;
       color: #007B3E;
       font-weight: bold;
-      transition: 0.2s;
     }
 
-    .nav a:hover,
-    .nav a.active {
+    nav.nav a:hover,
+    nav.nav a.active {
       color: #ff6600;
     }
 
+    .sidebar-mobile {
+      display: none;
+    }
+
     @media (max-width: 768px) {
+
+      .sidebar {
+        display: none;
+      }
+
+      .sidebar-mobile {
+        display: block;
+        width: 100%;
+        padding: 0 20px;
+        margin-top: 20px;
+      }
+      
       .menu-toggle {
         display: flex;
       }
 
-      .nav {
-        width: 100%;
-      }
-
-      .nav ul {
+      nav.nav ul {
         display: none;
         flex-direction: column;
-        gap: 10px;
         background: #fff;
         width: 100%;
-        margin-top: 10px;
-        padding: 10px 0;
+        gap: 10px;
+        padding: 10px 20px;
+        animation: fadeIn 0.3s ease-in-out;
+        text-align: center;
       }
 
-      .nav ul.active {
+      nav.nav ul.active {
         display: flex;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
       }
     }
 
     main {
       display: flex;
+      flex: 1;
       max-width: 1000px;
       margin: 30px auto;
       padding: 0 20px;
       gap: 20px;
-      flex: 1;
+      width: 100%;
     }
 
     .sidebar {
@@ -207,23 +249,77 @@
       padding: 20px;
       text-align: center;
       font-size: 17px;
-      margin-top: auto;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        display: none;
+      }
+
+      .sidebar-mobile {
+        display: block;
+        width: 100%;
+        padding: 0 20px;
+      }
+
+      .sidebar-mobile details summary {
+        background: #007B3E;
+        color: white;
+        padding: 12px;
+        font-weight: bold;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-bottom: 10px;
+      }
+
+      .sidebar-mobile ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        background: white;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .sidebar-mobile li a {
+        display: block;
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+        text-decoration: none;
+        color: #333;
+        background: #f9f9f9;
+      }
+
+      .sidebar-mobile li a.active,
+      .sidebar-mobile li a:hover {
+        background: #ff6600;
+        color: white;
+      }
+
+      .content {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo">
-      <img src="foto/debaar.png" alt="Logo IPM" />
-      <div class="logo-text">
-        <h1>IKATAN PELAJAR MUHAMMADIYAH</h1>
-        <h2>PC IPM DEPOK BARAT</h2>
+    <div class="header-wrapper">
+      <div class="logo">
+        <img src="foto/debaar.png" alt="Logo IPM" />
+        <div class="logo-text">
+          <h1>IKATAN PELAJAR MUHAMMADIYAH</h1>
+          <h2>PC IPM DEPOK BARAT</h2>
+        </div>
       </div>
-    </div>
-    <div class="menu-toggle" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
     </div>
     <nav class="nav">
       <ul id="nav-list">
@@ -238,12 +334,26 @@
     </nav>
   </header>
 
+  <div class="sidebar-mobile">
+    <details>
+      <summary>Kategori</summary>
+      <ul>
+        <li><a href="#" data-kategori="Semua" class="active">Semua</a></li>
+        <li><a href="#" data-kategori="Dakwah">Dakwah</a></li>
+        <li><a href="#" data-kategori="Cerpen">Cerpen</a></li>
+        <li><a href="#" data-kategori="Berita Acara">Berita Acara</a></li>
+        <li><a href="#" data-kategori="Pengetahuan">Pengetahuan</a></li>
+      </ul>
+    </details>
+  </div>
+
   <main>
     <aside class="sidebar">
       <h2>Kategori</h2>
       <ul>
         <li><a href="#" data-kategori="Semua" class="active">Semua</a></li>
         <li><a href="#" data-kategori="Dakwah">Dakwah</a></li>
+        <li><a href="#" data-kategori="Cerpen">Cerpen</a></li>
         <li><a href="#" data-kategori="Berita Acara">Berita Acara</a></li>
         <li><a href="#" data-kategori="Pengetahuan">Pengetahuan</a></li>
       </ul>
@@ -292,10 +402,10 @@
 
     tampilkanArtikel();
 
-    document.querySelectorAll(".sidebar a").forEach(link => {
+    document.querySelectorAll("[data-kategori]").forEach(link => {
       link.addEventListener("click", function(e) {
         e.preventDefault();
-        document.querySelectorAll(".sidebar a").forEach(a => a.classList.remove("active"));
+        document.querySelectorAll("[data-kategori]").forEach(a => a.classList.remove("active"));
         this.classList.add("active");
         const kategori = this.getAttribute("data-kategori");
         tampilkanArtikel(kategori);
