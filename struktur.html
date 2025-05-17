@@ -16,8 +16,8 @@
 
     body {
       background: #fffef7;
-      text-align: center;
-      padding: 20px;
+      color: #333;
+      overflow-x: hidden;
       position: relative;
     }
 
@@ -36,17 +36,33 @@
       pointer-events: none;
     }
 
+    body::after {
+      content: "";
+      position: fixed;
+      bottom: -30px;
+      right: -30px;
+      width: 220px;
+      height: 220px;
+      background: url('foto/debaar.png') no-repeat;
+      background-size: contain;
+      opacity: 0.04;
+      z-index: 0;
+      pointer-events: none;
+    }
+
     header {
       background: #fff;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
-      z-index: 1000;
-      flex-wrap: wrap;
+      z-index: 999;
+    }
+
+    .header-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
     }
 
     .logo {
@@ -56,7 +72,7 @@
     }
 
     .logo img {
-      height: 50px;
+      height: 40px;
     }
 
     .logo-text h1 {
@@ -85,16 +101,13 @@
       transition: 0.3s;
     }
 
-    nav.nav {
-      width: 100%;
-    }
-
     nav.nav ul {
       list-style: none;
       display: flex;
       justify-content: center;
       gap: 20px;
-      flex-wrap: wrap;
+      padding: 10px 0;
+      text-align: center;
     }
 
     nav.nav a {
@@ -118,12 +131,19 @@
         flex-direction: column;
         background: #fff;
         width: 100%;
-        padding: 10px 0;
-        margin-top: 10px;
+        gap: 10px;
+        padding: 10px 20px;
+        animation: fadeIn 0.3s ease-in-out;
+        text-align: center;
       }
 
       nav.nav ul.active {
         display: flex;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
       }
     }
 
@@ -132,6 +152,7 @@
       font-weight: bold;
       margin-top: 20px;
       color: #333;
+      text-align: center;
     }
 
     .subtitle {
@@ -141,6 +162,7 @@
       margin-top: 5px;
       padding-bottom: 20px;
       border-bottom: 2px solid #ddd;
+      text-align: center;
     }
 
     .section-title {
@@ -151,6 +173,8 @@
       border-bottom: 2px solid #007B3E;
       display: inline-block;
       padding-bottom: 5px;
+      text-align: center;
+      width: 100%;
     }
 
     .section-divider {
@@ -174,6 +198,7 @@
       flex-wrap: wrap;
       gap: 20px;
       margin-top: 15px;
+      text-align: center;
     }
 
     .position-box {
@@ -193,6 +218,7 @@
 
     .position-text {
       margin-top: 10px;
+      text-align: center;
     }
 
     .position-text strong {
@@ -217,21 +243,23 @@
 </head>
 <body>
   <header>
-    <div class="logo">
-      <img src="foto/debaar.png" alt="Logo IPM">
-      <div class="logo-text">
-        <h1>IKATAN PELAJAR MUHAMMADIYAH</h1>
-        <h2>PC IPM DEPOK BARAT</h2>
+    <div class="header-wrapper">
+      <div class="logo">
+        <img src="foto/debaar.png" alt="Logo IPM" />
+        <div class="logo-text">
+          <h1>IKATAN PELAJAR MUHAMMADIYAH</h1>
+          <h2>PC IPM DEPOK BARAT</h2>
+        </div>
       </div>
-    </div>
-    <div class="menu-toggle" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
     <nav class="nav">
       <ul id="nav-list">
-        <li><a href="index.html">Beranda</a></li>
+        <li><a href="index.html" >Beranda</a></li>
         <li><a href="sejarah.html">Sejarah</a></li>
         <li><a href="artikel.html">Artikel</a></li>
         <li><a href="struktur.html" class="active">Struktur Organisasi</a></li>
@@ -252,18 +280,20 @@
                 <div class="position-text"><strong>Rahadian Fakhir</strong><span>Ketua Umum</span></div>
             </div>
             <div class="position-box">
-                <img src="foto/bina.webp" alt="Sekretaris Umum">
+                <img src="foto/bina.png" alt="Sekretaris Umum">
                 <div class="position-text"><strong>Sabrina Qoulan Sakila</strong><span>Sekretaris Umum</span></div>
             </div>
             <div class="position-box">
-                <img src="foto/illona.webp" alt="Bendahara Umum">
+                <img src="foto/illona.png" alt="Bendahara Umum">
                 <div class="position-text"><strong>Khairunnisa Illona Y</strong><span>Bendahara Umum</span></div>
             </div>
         </div>
+        <div class="position-group">
         <div class="position-box">
-            <img src="foto/bunga.webp" alt="Bendahara 1">
+            <img src="foto/bunga.png" alt="Bendahara 1">
             <div class="position-text"><strong>Bunga Az-Zahra Ryanti</strong><span>Bendahara 1</span></div>
         </div>
+      </div>
     </div>
     </div>
 
@@ -276,22 +306,22 @@
                 <div class="position-text"><strong>Eko Aryo Saputra</strong><span>Ketua Bidang</span></div>
             </div>
             <div class="position-box">
-                <img src="foto/aqil.png" alt="Sekretaris Perkaderan">
-                <div class="position-text"><strong>Muhammad Ibnu Aqil</strong><span>Sekretaris Bidang</span></div>
+                <img src="foto/Project Capture (2).png" alt="Sekretaris Perkaderan">
+                <div class="position-text"><strong>Fadhilah Putri Panjaitan</strong><span>Sekretaris Bidang</span></div>
             </div>
         </div>
         <div class="position-group">
             <div class="position-box">
-                <img src="foto/Project Capture (2).png" alt="Anggota 1">
-                <div class="position-text"><strong>Dinda Dwi Rahma</strong><span>Anggota</span></div>
+                <img src="foto/Project Capture.png" alt="Anggota 1">
+                <div class="position-text"><strong>Tubagus Haidar Keandra Sakha</strong><span>Anggota</span></div>
             </div>
             <div class="position-box">
                 <img src="foto/Project Capture.png" alt="Anggota 2">
-                <div class="position-text"><strong>Khairul Azmi</strong><span>Anggota</span></div>
+                <div class="position-text"><strong>Khoirul Febrian</strong><span>Anggota</span></div>
             </div>
             <div class="position-box">
-                <img src="foto/Project Capture (2).png" alt="Anggota 3">
-                <div class="position-text"><strong>Vega Maulidia Putri</strong><span>Anggota</span></div>
+                <img src="foto/Project Capture.png" alt="Anggota 3">
+                <div class="position-text"><strong>Faris Rabbani</strong><span>Anggota</span></div>
             </div>
         </div>
     </div>
@@ -301,7 +331,7 @@
     <div class="positions-container">
         <div class="position-group">
             <div class="position-box">
-                <img src="foto/Alfiana.webp" alt="Ketua KDI">
+                <img src="foto/Alfiana.png" alt="Ketua KDI">
                 <div class="position-text"><strong>Alfiana Rahmawati G</strong><span>Ketua Bidang</span></div>
             </div>
             <div class="position-box">
@@ -311,11 +341,11 @@
         </div>
         <div class="position-group">
             <div class="position-box">
-                <img src="foto/bimo.webp" alt="Anggota 1">
+                <img src="foto/bimo.png" alt="Anggota 1">
                 <div class="position-text"><strong>Bimo Yunda Permana Putra</strong><span>Anggota</span></div>
             </div>
             <div class="position-box">
-                <img src="foto/goli.webp" alt="Anggota 2">
+                <img src="foto/goli.png" alt="Anggota 2">
                 <div class="position-text"><strong>Hadhir Ghali Atsna'i R</strong><span>Anggota</span></div>
             </div>
             <div class="position-box">
@@ -330,23 +360,27 @@
     <div class="positions-container">
         <div class="position-group">
             <div class="position-box">
-                <img src="foto/febra.webp" alt="Ketua PIP">
+                <img src="foto/febra.png" alt="Ketua PIP">
                 <div class="position-text"><strong>Febra Lailatul Mufida</strong><span>Ketua Bidang</span></div>
             </div>
             <div class="position-box">
-                <img src="foto/Mahdavikia.webp" alt="Sekretaris PIP">
+                <img src="foto/afifah.png" alt="Sekretaris PIP">
                 <div class="position-text"><strong>Afifah Mahdavikia</strong><span>Sekretaris Bidang</span></div>
             </div>
         </div>
         <div class="position-group">
             <div class="position-box">
-                <img src="foto/ijang.webp" alt="Anggota 1">
+                <img src="foto/ijang.png" alt="Anggota 1">
                 <div class="position-text"><strong>Muhammad Fahrizal Alfashina</strong><span>Anggota</span></div>
             </div>
             <div class="position-box">
-                <img src="foto/fio.webp" alt="Anggota 2">
+                <img src="foto/fio.png" alt="Anggota 2">
                 <div class="position-text"><strong>Sheilla Alfionita</strong><span>Anggota</span></div>
             </div>
+            <div class="position-box">
+              <img src="foto/Project Capture (2).png" alt="Anggota 3">
+              <div class="position-text"><strong>Nur Azizah</strong><span>Anggota</span></div>
+          </div>
         </div>
     </div>
 
@@ -365,7 +399,7 @@
         </div>
         <div class="position-group">
             <div class="position-box">
-                <img src="foto/saki.webp" alt="Anggota 1">
+                <img src="foto/saki.png" alt="Anggota 1">
                 <div class="position-text"><strong>Sakhiwafa Dalimunthe</strong><span>Anggota</span></div>
             </div>
             <div class="position-box">
@@ -373,7 +407,7 @@
                 <div class="position-text"><strong>Muhammad Rivaldi</strong><span>Anggota</span></div>
             </div>
             <div class="position-box">
-                <img src="foto/rafi.webp" alt="Anggota 3">
+                <img src="foto/rafi.png" alt="Anggota 3">
                 <div class="position-text"><strong>Muhammad Rafi</strong><span>Anggota</span></div>
             </div>
         </div>
@@ -384,21 +418,21 @@
     <div class="positions-container">
         <div class="position-group">
             <div class="position-box">
-                <img src="foto/mahare.png" alt="Ketua ADVOKASI">
-                <div class="position-text"><strong>Mahare Girisa Sakti</strong><span>Ketua Bidang</span></div>
+                <img src="foto/wisnu.png" alt="Ketua ADVOKASI">
+                <div class="position-text"><strong>Anugerah Wisnu Syaputra</strong><span>Ketua Bidang</span></div>
             </div>
             <div class="position-box">
-                <img src="foto/wisnu.webp" alt="Sekretaris ADVOKASI">
-                <div class="position-text"><strong>Anugerah Wisnu Syaputra</strong><span>Sekretaris Bidang</span></div>
+                <img src="foto/Project Capture (2).png" alt="Sekretaris ADVOKASI">
+                <div class="position-text"><strong>Anindya Siti Sutiansih</strong><span>Sekretaris Bidang</span></div>
             </div>
         </div>
         <div class="position-group">
             <div class="position-box">
-                <img src="foto/nindy.png" alt="Anggota 1">
-                <div class="position-text"><strong>Anindya Siti Sutiansih</strong><span>Anggota</span></div>
+                <img src="foto/Project Capture.png" alt="Anggota 1">
+                <div class="position-text"><strong>M.Fadil Mansyur</strong><span>Anggota</span></div>
             </div>
             <div class="position-box">
-                <img src="foto/paik.webp" alt="Anggota 2">
+                <img src="foto/paik.png" alt="Anggota 2">
                 <div class="position-text"><strong>Muhammad Rifaiq Q</strong><span>Anggota</span></div>
             </div>
             <div class="position-box">
@@ -417,7 +451,7 @@
     <div class="positions-container">
         <div class="position-group">
             <div class="position-box">
-                <img src="foto/irma kren.webp" alt="Ketua IPMAWATI">
+                <img src="foto/irma kren.png" alt="Ketua IPMAWATI">
                 <div class="position-text"><strong>Khairunnisa Irmaliya</strong><span>Ketua Bidang</span></div>
             </div>
             <div class="position-box">
@@ -446,11 +480,11 @@
     <div class="positions-container">
         <div class="position-group">
             <div class="position-box">
-                <img src="foto/pini.webp" alt="Ketua PKK">
+                <img src="foto/pini.png" alt="Ketua PKK">
                 <div class="position-text"><strong>Afini Naja Ilhafa</strong><span>Ketua Bidang</span></div>
             </div>
             <div class="position-box">
-                <img src="foto/hana.webp" alt="Sekretaris PKK">
+                <img src="foto/hana.png" alt="Sekretaris PKK">
                 <div class="position-text"><strong>Hana Fitriani</strong><span>Sekretaris Bidang</span></div>
             </div>
         </div>
@@ -460,11 +494,11 @@
                 <div class="position-text"><strong>Khoirunnisa Awaliah Banjar</strong><span>Anggota</span></div>
             </div>
             <div class="position-box">
-                <img src="foto/istianah.webp" alt="Anggota 2">
+                <img src="foto/istianah.png" alt="Anggota 2">
                 <div class="position-text"><strong>Istianah Fitriah Tamami</strong><span>Anggota</span></div>
             </div>
             <div class="position-box">
-                <img src="foto/isan.webp" alt="Anggota 3">
+                <img src="foto/isan.png" alt="Anggota 3">
                 <div class="position-text"><strong>Muhammad Ikhsan Farid</strong><span>Anggota</span></div>
             </div>
         </div>
