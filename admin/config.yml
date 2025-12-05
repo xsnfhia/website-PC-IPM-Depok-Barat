@@ -12,7 +12,7 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "Judul", name: "title", widget: "string"}
-      - {label: "Kategori", name: "kategori", widget: "string"}
-      - {label: "Isi Artikel", name: "body", widget: "markdown"}
-      - {label: "Tautan", name: "link", widget: "string"}
+      - { label: "Judul", name: "title", widget: "string" }
+      - { label: "Kategori", name: "kategori", widget: "string" }
+      - { label: "Isi Artikel", name: "body", widget: "markdown" }
+      - { label: "Tautan", name: "link", widget: "string" }
